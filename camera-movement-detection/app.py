@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 from PIL import Image
-import movement_detector
+import src.movement_detector as movement_detector
 
 st.title("Camera Movement Detection Demo")
 st.write(
@@ -12,11 +12,13 @@ uploaded_files = st.file_uploader(
     "Choose image files", type=["jpg", "jpeg", "png"], accept_multiple_files=True
 )
 
+
 if uploaded_files:
     frames = []
     for uploaded_file in uploaded_files:
         image = Image.open(uploaded_file)
         frame = np.array(image)
+
         if frame.shape[-1] == 4:  # RGBA to RGB
             frame = frame[:, :, :3]
         frames.append(frame)
