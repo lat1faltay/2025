@@ -162,9 +162,18 @@ This project was made possible by the work of various contributors, libraries, a
 
 ### Connection Information
 
+### VPS Server
+- http://37.148.211.134:8501/
+  
 ### Streamlit
 - https://atp-core-talent.streamlit.app/
+> ⚠️ Note: The Streamlit server may experience stability issues due to permission problems.  
+> It is recommended to view the live demo served from the VPS server instead.
 
+
+<<<<<<< HEAD
 ### VPS Server
 - http://82.29.179.68/8501
+=======
+>>>>>>> 433eb5b7d65faf365b24fa8050ec87b52e7ef60a
 
