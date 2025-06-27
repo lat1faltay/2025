@@ -1,0 +1,31 @@
+detector:
+  default: AbsDiff
+
+allowed_types:
+  images: ["jpg", "jpeg", "png"]
+  videos: ["mp4", "avi"]
+
+video:
+  max_frames: 1000
+  max_uploads: 5
+
+queue:
+  max_video_items: 5
+  max_frame_items: 100
+
+
+absdiff:
+  threshold: 50000
+  threshold_value: 25
+
+orb:
+  threshold: 30
+
+goodfeatures:
+  threshold: 100
+
+homography:
+  threshold: 0.8
+
+opticalflow:
+  threshold: 1.0

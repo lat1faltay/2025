@@ -4,3 +4,56 @@ __pycache__/
 *.DS_Store
 .toml
 .lock
+
+
+
+# C extensions
+*.so
+
+# Virtual environment
+venv/
+ENV/
+env/
+.venv/
+myEnv/
+
+
+# Environments
+.env
+.env.*
+
+# VSCode settings (optional)
+.vscode/
+
+# Pytest cache
+.pytest_cache/
+
+# Logs
+logs/
+*.log
+
+# Streamlit temp
+.streamlit/
+
+# macOS system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
+
+# Python egg info
+*.egg-info/
+dist/
+build/
+
+# Test output
+htmlcov/
+coverage.xml
+*.cover
+*.py,cover
+
+# MyPy cache
+.mypy_cache/
+
+# Other
+*.swp
