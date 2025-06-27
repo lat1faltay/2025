@@ -13,13 +13,7 @@ from src.core.models.config_model import GoodFeaturesConfig
 logger = get_logger()
 
 class DetectorFactory:
-    """
-    Factory class to create and configure detectors based on the provided settings.
-
-    Args:
-        config_path (str): Path to the configuration file (default is "config/settings.yaml").
-    """
-    def __init__(self, config_path="config/settings.yaml"):
+    def __init__(self, config_path="camera-movement-detection/config/settings.yaml"):
         """
         Initializes the DetectorFactory by loading configuration data from the given YAML file.
 
