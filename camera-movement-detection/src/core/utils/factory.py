@@ -13,7 +13,7 @@ from src.core.models.config_model import GoodFeaturesConfig
 logger = get_logger()
 
 class DetectorFactory:
-    def __init__(self, config_path="camera-movement-detection/config/settings.yaml"):
+    def __init__(self, config_path="config/settings.yaml"):
         """
         Initializes the DetectorFactory by loading configuration data from the given YAML file.
 

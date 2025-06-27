@@ -1,95 +1,170 @@
-# ATP Core Talent 2025
-# Core Talent AI Coder Challenge: Camera Movement Detection
+# Camera Movement Detection
 
-**Detecting Significant Camera Movement Using Image Recognition**
+## Overview
 
----
+The **Camera Movement Detection** project is a computer vision application designed to detect and analyze movements in video footage. This system identifies different types of movement such as translation, object motion, and camera shake, using various algorithms like **Good Features to Track**, **Optical Flow**, **Homography**, and **ORB**. The application supports real-time video analysis and provides visual feedback to the user through an interactive interface built with **Streamlit**.
 
-## Scenario
+The system is designed to be modular and scalable, allowing users to easily integrate new movement detection algorithms and customize the analysis process.
 
-Imagine you are tasked with building a component for a smart camera system. Your goal is to detect **significant movement**—for example, if someone moves or tilts the camera or if the entire camera is knocked or shifted. This is different from simply detecting moving objects in the scene.
 
 ---
 
-## Requirements
+## Folder Structure
 
-1. **Input:**
+```bash
+2025/
+└── camera-movement-detection/
+├── app.py # Main Streamlit app entry point
+├── requirements.txt # Python dependencies
+├── Dockerfile # Dockerfile for containerization
+├── config/
+│ └── settings.yaml # Configuration file for thresholds and settings
+├── src/
+│ ├── core/
+│ │ ├── detectors/ # Movement detection algorithm implementations
+│ │ ├── exceptions/ # Custom exception classes
+│ │ ├── models/ # Data models like DetectionResult, MovementType
+│ │ ├── utils/ # Utility classes like logger, factory, validators
+│ │ └── validators/ # Input validation classes
+│ ├── pipelines/ # Data processing pipelines like Extractor
+│ └── tests/ # Unit and integration tests
+└── logs/ # Log files directory (may be created at runtime)
+```
+---
 
-   * A sequence of images or frames (at least 10-20), simulating a fixed camera, with some frames representing significant camera movement (tilt, pan, large translation), and others showing a static scene or minor background/object motion.
-   * You may use public datasets, generate synthetic data, or simulate with your own webcam.
+## Features
 
-     * Example: [CameraBench Dataset on Hugging Face](https://huggingface.co/datasets/syCen/CameraBench)
-2. **Task:**
-
-   * Build an algorithm (**Python preferred**) that analyzes consecutive frames and detects when significant camera movement occurs.
-   * Output a list of frames (by index/number) where significant movement is detected.
-3. **Expected Features:**
-
-   * **Basic:** Frame differencing or feature matching to detect large global shifts (e.g., using OpenCV’s ORB/SIFT/SURF, optical flow, or homography).
-   * **Bonus:** Distinguish between camera movement and object movement within the scene (e.g., use keypoint matching, estimate transformation matrices, etc.).
-4. **Deployment:**
-
-   * Wrap your solution in a small web app (**Streamlit, Gradio, or Flask**) that allows the user to upload a sequence of images (or a video), runs the detection, and displays the result.
-   * Deploy the app on a public platform (**Vercel, Streamlit Cloud, Hugging Face Spaces**, etc.)
-5. **Deliverables:**
-
-   * Public app URL
-   * GitHub repo (with code and requirements.txt)
-   * README (explaining your approach, dataset, and how to use the app)
-
-     * **Sample README Outline:**
-
-       * Overview of your approach and movement detection logic
-       * Any challenges or assumptions
-       * How to run the app locally
-       * Link to the live app
-       * Example input/output screenshots
-   * AI Prompts or Chat History (if used for support)
+- **Real-Time Detection:** Detects movement in real-time from video or image files.
+- **Multiple Detection Algorithms:**
+  - **Good Features to Track**
+  - **Optical Flow**
+  - **Homography**
+  - **ORB (Oriented FAST and Rotated BRIEF)**
+- **User-Friendly Interface:** A Streamlit-powered interface for easy interaction with the system.
+- **Customizable:** Easily extendable with new detection algorithms or adjustments to existing ones.
+- **Supports Multiple File Types:** Works with both video and image files.
 
 ---
 
-## Evaluation Rubric
+## Installation
 
-| Criteria           | Points | Details                                                                                    |
-| ------------------ | ------ | ------------------------------------------------------------------------------------------ |
-| **Correctness**    | 5      | Accurately detects significant camera movement; low false positives/negatives.             |
-| **Implementation** | 5      | Clean code, good use of OpenCV or relevant libraries, modular structure.                   |
-| **Deployment**     | 5      | App is online, easy to use, and functions as described.                                    |
-| **Innovation**     | 3      | Advanced techniques (feature matching, transformation estimation, clear object vs camera). |
-| **Documentation**  | 2      | Clear README, instructions, and concise explanation of method/logic.                       |
+### 1. Clone the Repository
 
----
+```bash
+git clone https://github.com/lat1faltay/2025.git
+cd 2025/camera-movement-detection 
+``````
+### 2. Set up a Virtual Environment
+```bash
+- Linux or Mac
+python3 -m venv venv
+source venv/bin/activate 
 
-## Suggested Stack
+- Windows
+python -m venv venv
+.\venv\Scripts\activate
+``````
 
-* **Python** or **C#**
-* **OpenCV** for computer vision
-* **Streamlit**, **Gradio**, or a **shadcn-powered Vercel site** for quick web UI
-* **GitHub** for code repo, **Streamlit Cloud**, **Hugging Face Spaces**, or **Vercel** for deployment
+### Install Dependencies
+Make sure you have requirements.txt in the root directory. Install the necessary dependencies:
+```bash
+pip install -r requirements.txt
+``````
 
----
+## Usage
+### 1. Running the Application Locally
+Once the dependencies are installed, you can start the Streamlit app:
+```bash
+streamlit run app.py
+``````
+The app will be available at: http://localhost:8501
 
-# 📋 Candidate Instructions
+### 2. Uploading Files
+You can upload video or image files through the Streamlit UI. The system will detect and display the movement types in the uploaded frames.
 
-1. **Fork this repository** (or start your own repository with the same structure).
-2. **Implement your movement detection algorithm** in `movement_detector.py`.
-3. **Develop a simple web app** (`app.py`) that allows users to upload images/sequences and view detection results.
-4. **Deploy your app** on a public platform (e.g., Streamlit Cloud, Hugging Face Spaces, Vercel, Heroku) and **share both your deployed app URL and GitHub repository link**.
-5. **Document your work**: Include a `README.md` that explains your approach, how to run your code, and sample results (with screenshots or example outputs).
 
----
+### 3. Viewing the Results
+Once a file is uploaded, the results for each algorithm will be displayed, showing the frames with detected movement types. You will also see the confidence score and the type of movement detected (e.g., Translation, Object, Camera).
 
-**Deadline:**
-🕓 **27.06.2025**
+## Configuration
 
----
+### Custom Configurations
 
-**Plagiarism Policy:**
+The project uses a config file to manage settings such as thresholds for detection and the detection algorithms used. This file can be customized by modifying `src/config/settings.yaml`.
 
-* This must be **individual, AI-powered work**.
-* You may use open-source libraries, but you **must cite** all external resources and code snippets.
-* Do not submit work copied from others or from the internet without proper acknowledgment.
+- **Threshold values** for each algorithm.
+- **Movement detection settings**.
+- **Logging settings**.
 
----
+### Example Configuration (settings.yaml):
+```bash
+thresholds:
+  good_features: 100
+  optical_flow: 0.5
+  homography: 0.1
 
-**Good luck! Show us your best hands-on AI skills!**
+algorithms:
+  - good_features
+  - optical_flow
+  - homography
+  - orb
+``````
+Make sure the configuration file is placed in the correct directory (src/config/).
+
+## Algorithms
+
+The following movement detection algorithms are included in this project:
+
+1. **Good Features to Track**  
+   This algorithm tracks good features in consecutive video frames. It computes the difference in feature count between frames to detect motion.
+
+2. **Optical Flow**  
+   Using Lucas-Kanade Optical Flow, this method tracks the motion of pixels across consecutive frames.
+
+3. **Homography Detection**  
+   This algorithm computes the Homography Matrix between consecutive frames to detect camera motion or object motion.
+
+4. **ORB (Oriented FAST and Rotated BRIEF)**  
+   ORB is a feature detector and descriptor that combines the FAST corner detector and the BRIEF descriptor with orientation information.
+
+
+## Running the Project
+### Running with Docker (Optional)
+If you prefer to run this project using Docker, the project is Dockerized and can be easily run in any environment that supports Docker.
+
+### 1. Build the Docker image:
+```bash
+docker build -t camera-movement-detection .
+```
+### 2. Run the Docker container:
+
+```bash
+docker run -p 8501:8501 camera-movement-detection
+```
+
+##Testing
+To run the tests:
+```bash
+pytest
+```
+Tests are located in the tests/ directory, and they are designed to check the functionality of different algorithms and the application itself.
+
+
+
+## Acknowledgements
+This project was made possible by the work of various contributors, libraries, and frameworks:
+- OpenCV
+- Streamlit
+- NumPy
+- PyYAML
+- pytest
+
+
+### Connection Information
+
+### Streamlit
+- https://atp-core-talent.streamlit.app/
+
+### VPS Server
+- https://atp-core-talent.latifaltay.com
+
