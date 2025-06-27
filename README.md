@@ -163,8 +163,8 @@ This project was made possible by the work of various contributors, libraries, a
 ### Connection Information
 
 ### VPS Server
-- https://latifaltayprojects.com
-- http://http://82.29.179.68:8501
+- www.latifaltayprojects.com
+- 82.29.179.68:8501
 
 ### Streamlit
 - https://atp-core-talent.streamlit.app/
