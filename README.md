@@ -166,5 +166,5 @@ This project was made possible by the work of various contributors, libraries, a
 - https://atp-core-talent.streamlit.app/
 
 ### VPS Server
-- http://37.148.211.134/ 
+- http://37.148.211.134:8501/
 
