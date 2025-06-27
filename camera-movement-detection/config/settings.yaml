@@ -11,7 +11,7 @@ video:
 
 queue:
   max_video_items: 5
-  max_frame_items: 100
+  max_frame_items: 1000
 
 
 absdiff:
