@@ -28,6 +28,9 @@ myEnv/
 # Pytest cache
 .pytest_cache/
 
+# Logs
+logs/
+*.log
 
 # Streamlit temp
 .streamlit/
